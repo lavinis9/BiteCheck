@@ -2,35 +2,46 @@
 #include <string>
 #include <limits>
 #include <vector>
-#include <chrono>
 #include <windows.h>
-#include <map>
 
 using namespace std;
-using namespace std::chrono;
-using namespace chrono;
 
 class APP
 {
 private:
-    string Product_Name;
+    string Product_Name, areskia;
     long long Product_ID;
-    long Expiration_Date;
     double Weight, Calories, Proteins;
+    int day, month, year;
 
 public:
     /*Ftiaxnw me ton constructora to proion pou sxetizetai me to faghto*/
-    APP(string P_R, long long P_ID, long DATE, double Wght, double Clrs, double Prtn)
+    APP(string P_R, string ar, double Wght, double Clrs, double Prtn, int da, int mo, int ye, long long chv)
     {
         Product_Name = P_R;
-        Product_ID = P_ID;
-        Expiration_Date = DATE;
+        areskia = ar;
         Weight = Wght;
         Calories = Clrs;
         Proteins = Prtn;
+        day = da;
+        month = mo;
+        year = ye;
+        Product_ID = chv;
+    }
+    friend ostream &operator<<(ostream &os, const APP &btchk)
+    {
+        os << "To Onoma Tou Proiontos----> " << btchk.Product_Name;
+        os << " Sou Aresei Mwrh Loulou----> " << btchk.areskia;
+        os << " To Varos Tou Se Kila----> " << btchk.Weight;
+        os << " Oi Thermides Tou----> " << btchk.Calories;
+        os << " Oi Prwteines----> " << btchk.Proteins;
+        os << " H Hmera Lhjhs Tou----> " << btchk.day;
+        os << " O Mhnas Lhjhs Tou----> " << btchk.month;
+        os << " To Etos Lhjhs Tou----> " << btchk.year;
+        os << " O Ekastote Kwdikos Tou----> " << btchk.Product_ID;
+        return os;
     }
 };
-
 /*Kommati Sunarthsewn*/
 /*          */
 /*         */
@@ -203,7 +214,21 @@ string saresei(string a1111)
 }
 /*          */
 /*         */
-// Thelw Na Epistrepsw Ena Vector
+string foo_areskias(string foo)
+{
+    if (foo == "Y")
+    {
+        cout << "S'Aresei To Proion" << endl;
+        return foo;
+    }
+    else
+    {
+        cout << "Den Sou Aresei Auto To Proion" << endl;
+        return foo;
+    }
+}
+/*          */
+/*         */
 int main()
 {
     cout << "KalwsHrthes Sir" << endl;
@@ -213,7 +238,6 @@ int main()
     double Weight, Calories, Proteins;
     vector<long long> v1; // Dhlwsh Vector Gia Monadikothta Kwdikou
     string areskia;
-    map<string, string> m1;
     cout << "Posa Prointa Theleis Na Eisageis???" << endl;
     cout << "-----------------------------------" << endl;
     cout << "Prepei Na Einai Ypoxrewtika MegaLutero Iso Tou 0" << endl;
@@ -230,7 +254,6 @@ int main()
         cout << " Thelw Thetiko Kai Oxi Iso Me 0 Plithos" << endl;
         cin >> count;
     }
-
     cout << "-------------------------------" << endl;
     cout << "Ntaxei Sir" << endl;
     for (int i = 0; i < count; i++)
@@ -307,26 +330,31 @@ int main()
         else
         {
             v1.push_back(Product_ID);
-            for (int i = 0; i < v1.size() - 1; i++)
+            for (int j = 0; j < v1.size() - 1; j++)
             {
-                for (int k = i + 1; k < v1.size(); k++)
+                for (int k = j + 1; k < v1.size(); k++)
                 {
-                    while (v1[k] == v1[i])
+                    while (v1[k] == v1[j])
                     {
                         cout << "Ksanavale Kwdiko Den Einai Monadikos" << endl;
                         cout << "--------------------------------" << endl;
                         v1.erase(v1.begin() + k);
                         cin >> Product_ID;
+                        if (cin.fail())
+                        {
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        }
                         Product_ID = eisodos_kwdikou(Product_ID);
                         v1.push_back(Product_ID);
-                        i = 0;
+                        j = 0;
                     }
                 }
             }
             cout << "Emfanisei Vector " << endl;
             cout << "--------------------------------" << endl;
-            for (auto i : v1)
-                cout << i << endl;
+            for (auto it : v1)
+                cout << it << endl;
         }
         // HMEROMHNIA LHKSHS
         cout << "Dwse Hmeromhnia Lhkshs Tou Prointos" << endl;
@@ -366,6 +394,8 @@ int main()
         cout << "--------------------------------" << endl;
         cout << "Dwse Mou Apanthsh " << endl;
         cout << "--------------------------------" << endl;
+        cout << "An Sou Aresei Vale Y(YES) Eidalws Vale N(NO)" << endl;
+        cout << "--------------------------------" << endl;
         do
         {
             cout << "Y.NAI" << endl;
@@ -374,25 +404,21 @@ int main()
             cin >> areskia;
             areskia = saresei(areskia);
         } while (areskia == "O");
-        if (areskia == "Y")
-        {
-            cout << "S'Aresei To Proion" << endl;
-            m1.insert({Product_Name, areskia});
-        }
-        else if (areskia == "N")
-        {
-            cout << "Den Sou Aresei Auto To Proion" << endl;
-            cout << "--------------------------------" << endl;
-            cout << "Mhn Kaneis Kati" << endl;
-        }
-        for (auto it : m1)
-        {
-            cout << it.first << " einai apo ta agaphmena sou prointa: " << it.second << endl;
-        }
+        areskia = foo_areskias(areskia);
+        cout << "--------------------------------" << endl;
+        cout << "Vale Apanthsh An Sou Aresei Loulh " << areskia << endl;
+        //
+        //
+        /*THELW NA FTIAXW TO ANTIKEIMENO*/
+        APP BK(Product_Name, areskia, Weight, Calories, Proteins, day, month, year, Product_ID);
+        cout << "Emfanise To Kathe Proion Me Ola Tou Ta Xarakthristika " << endl;
+        cout << "--------------------------------" << endl;
+        cout << BK << endl;
     }
     // Apo To Windows API Pernw Thn Hmeromhnia Pou Xrhsimopoiw Thn Efarmogh Ara Auth Pou Kataxwrw Ta Proionta
     SYSTEMTIME st;
     GetLocalTime(&st);
+    cout << "--------------------------------" << endl;
     cout << "H Hmeromina Pou Kataxwreises Ta Prointa Einai :" << endl;
     cout << st.wDay << "/" << st.wMonth << "/" << st.wYear << endl;
     cout << "--------------------------------" << endl;
