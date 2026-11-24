@@ -47,6 +47,61 @@ public:
         os << "--------------------" << endl;
         return os;
     }
+    /*Getters */
+    /*       */
+    /*      */
+    string get_name()
+    {
+        return Product_Name;
+    }
+    /*       */
+    /*      */
+    string get_areskia()
+    {
+        return areskia;
+    }
+    /*       */
+    /*      */
+    double get_weight()
+    {
+        return Weight;
+    }
+    /*       */
+    /*      */
+    double get_calories()
+    {
+        return Calories;
+    }
+    /*       */
+    /*      */
+    double get_proteins()
+    {
+        return Proteins;
+    }
+    /*       */
+    /*      */
+    int get_day()
+    {
+        return day;
+    }
+    /*       */
+    /*      */
+    int get_month()
+    {
+        return month;
+    }
+    /*       */
+    /*      */
+    int get_year()
+    {
+        return year;
+    }
+    /*       */
+    /*      */
+    long long get_id()
+    {
+        return Product_ID;
+    }
 };
 /*Kommati Sunarthsewn*/
 /*          */
