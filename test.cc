@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// CLASSH
 class APP
 {
 private:
@@ -15,7 +16,7 @@ private:
     int day, month, year;
 
 public:
-    /*Ftiaxnw me ton constructora to proion pou sxetizetai me to faghto*/
+    /*Ftiaxnw me ton constructora to proion*/
     APP(string P_R, string ar, double Wght, double Clrs, double Prtn, int da, int mo, int ye, long long chv)
     {
         Product_Name = P_R;
@@ -30,15 +31,20 @@ public:
     }
     friend ostream &operator<<(ostream &os, const APP &btchk)
     {
-        os << "To Onoma Tou Proiontos----> " << btchk.Product_Name;
-        os << " Sou Aresei Mwrh Loulou----> " << btchk.areskia;
-        os << " To Varos Tou Se Kila----> " << btchk.Weight;
-        os << " Oi Thermides Tou----> " << btchk.Calories;
-        os << " Oi Prwteines----> " << btchk.Proteins;
-        os << " H Hmera Lhjhs Tou----> " << btchk.day;
-        os << " O Mhnas Lhjhs Tou----> " << btchk.month;
-        os << " To Etos Lhjhs Tou----> " << btchk.year;
-        os << " O Ekastote Kwdikos Tou----> " << btchk.Product_ID;
+        os << "To Onoma Tou Proiontos Einai----> " << btchk.Product_Name << endl;
+        os << "--------------------" << endl;
+        os << " Sou Aresei Mwrh Loulou?----> " << btchk.areskia << endl;
+        os << "--------------------" << endl;
+        os << " To Varos Tou Se Kila Einai----> " << btchk.Weight << endl;
+        os << "--------------------" << endl;
+        os << " Oi Thermides Tou Einai----> " << btchk.Calories << endl;
+        os << "--------------------" << endl;
+        os << " Oi Prwteines Tou Einai----> " << btchk.Proteins << endl;
+        os << "--------------------" << endl;
+        os << " H Hmeromhnia Lhjhs Tou Einai---->" << btchk.day << "/" << btchk.month << "/" << btchk.year << endl;
+        os << "--------------------" << endl;
+        os << " O Kwdikos Tou Einai----> " << btchk.Product_ID << endl;
+        os << "--------------------" << endl;
         return os;
     }
 };
@@ -86,7 +92,7 @@ double eisodos_varous(double wh)
         }
         cout << "Ksanavale Varos" << endl;
         cout << "--------------------" << endl;
-        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Varos" << endl;
+        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Varos 'H Arnhtiko Varos" << endl;
         cin >> wh;
     }
     return wh;
@@ -104,7 +110,7 @@ double eisodos_thermidwn(double cl)
         }
         cout << "Ksanavale Thermides" << endl;
         cout << "--------------------" << endl;
-        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Arithmo Thermidwn" << endl;
+        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Arithmo Thermidwn 'H Arnhtikes Thermides" << endl;
         cin >> cl;
     }
     return cl;
@@ -122,7 +128,7 @@ double eisodos_proteinwn(double pr)
         }
         cout << "Ksanavale Proteines" << endl;
         cout << "--------------------" << endl;
-        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Arithmo Prwteinwn" << endl;
+        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Arithmo Prwteinwn 'H Arnhtikes Prwteines" << endl;
         cin >> pr;
     }
     return pr;
@@ -140,7 +146,7 @@ long long eisodos_kwdikou(long long pr1)
         }
         cout << "Ksanavale Kwdiko" << endl;
         cout << "--------------------" << endl;
-        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Kwdiko Prointos" << endl;
+        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Kwdiko Prointos 'H Arnhtiko Kwdiko Proionos 'H NA PERIEXEI GRAMMATA" << endl;
         cin >> pr1;
     }
     return pr1;
@@ -233,14 +239,14 @@ int main()
 {
     cout << "KalwsHrthes Sir" << endl;
     int count, day, month, year;
-    string Product_Name;
+    string Product_Name, areskia;
     long long Product_ID;
     double Weight, Calories, Proteins;
-    vector<long long> v1; // Dhlwsh Vector Gia Monadikothta Kwdikou
-    string areskia;
+    vector<long long> v1;    // Dhlwsh Vector Gia Monadikothta Kwdikou
+    vector<APP> VECTOROUKOS; // Dhlwsh Vector Gia Apothikeysh Twn Antikeimenwn
     cout << "Posa Prointa Theleis Na Eisageis???" << endl;
     cout << "-----------------------------------" << endl;
-    cout << "Prepei Na Einai Ypoxrewtika MegaLutero Iso Tou 0" << endl;
+    cout << "Prepei Na Einai Ypoxrewtika Perissotera Apo 0" << endl;
     cin >> count;
     while (cin.fail() || count <= 0)
     {
@@ -251,7 +257,7 @@ int main()
         }
         cout << "Ksanavale Plithos" << endl;
         cout << "--------------------" << endl;
-        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Plithos" << endl;
+        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Plithos 'H Arnhtiko" << endl;
         cin >> count;
     }
     cout << "-------------------------------" << endl;
@@ -269,7 +275,7 @@ int main()
         cout << "To Onoma Einai tou prointos einai " << Product_Name << endl;
         cout << "--------------------------------" << endl;
         /*Varos Tha Metatrepetai Panta Se kg*/
-        cout << "Dwse Varos Tou Proiontos Ypoxreotika Megalutero Iso Tou 0" << endl;
+        cout << "Dwse Varos Tou Proiontos Ypoxreotika Megalutero Tou 0" << endl;
         cin >> Weight;
         if (cin.fail())
         {
@@ -293,7 +299,7 @@ int main()
         Weight = metatroph_varous(&epilogh, &Weight);
         cout << "To Proion Einai " << Weight << " Kila" << endl;
         cout << "--------------------------------" << endl;
-        cout << "Dwse Thermides Gia To Proion Ypoxreotika Megalutero Iso Tou 0" << endl;
+        cout << "Dwse Thermides Gia To Proion Ypoxreotika Megaluteres Tou 0" << endl;
         cin >> Calories;
         if (cin.fail())
         {
@@ -302,7 +308,7 @@ int main()
         }
         Calories = eisodos_thermidwn(Calories);
         cout << "--------------------------------" << endl;
-        cout << "Dwse Proitenes Gia To Proion Ypoxrewtika Megalutero Iso Tou 0" << endl;
+        cout << "Dwse Proitenes Gia To Proion Ypoxrewtika Megaluteres Tou 0" << endl;
         cin >> Proteins;
         if (cin.fail())
         {
@@ -316,6 +322,8 @@ int main()
         */
         /*EISAGWGH MONADIKOU KWDIKOU PROIONTOS Product_Id*/
         cout << "Dwse Kwdiko Proiontos Prosoxh Prepei Na Einai Monadikos" << endl;
+        cout << "--------------------------------" << endl;
+        cout << " Thelw Thetiko Kai Oxi Iso Me 0 Kwdiko Prointos 'H Arnhtiko Kwdiko Proionos 'H NA PERIEXEI GRAMMATA" << endl;
         cin >> Product_ID;
         if (cin.fail())
         {
@@ -407,14 +415,23 @@ int main()
         areskia = foo_areskias(areskia);
         cout << "--------------------------------" << endl;
         cout << "Vale Apanthsh An Sou Aresei Loulh " << areskia << endl;
+        cout << "--------------------------------" << endl;
         //
         //
         /*THELW NA FTIAXW TO ANTIKEIMENO*/
         APP BK(Product_Name, areskia, Weight, Calories, Proteins, day, month, year, Product_ID);
-        cout << "Emfanise To Kathe Proion Me Ola Tou Ta Xarakthristika " << endl;
-        cout << "--------------------------------" << endl;
-        cout << BK << endl;
+        //
+        //
+        /*PREPEI NA APOTHIKEFSW TO KATHENA ANTIKEIMENO SE ENA VECTOR ALLIWS THA TA XANW*/
+        cout << "Apothikevw Ta Antikeimena Se Ena Vector" << endl;
+        VECTOROUKOS.push_back(BK);
     }
+    //
+    //
+    /*NA EMFANISW TA PROINTA APO TO VECTOR*/
+    for (int x = 0; x < VECTOROUKOS.size(); x++)
+        cout << VECTOROUKOS[x] << endl;
+
     // Apo To Windows API Pernw Thn Hmeromhnia Pou Xrhsimopoiw Thn Efarmogh Ara Auth Pou Kataxwrw Ta Proionta
     SYSTEMTIME st;
     GetLocalTime(&st);
