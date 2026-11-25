@@ -246,7 +246,7 @@ int eisodos_mhna(int mhn)
 /*         */
 int eisodos_etos(int et)
 {
-    while (et < 2026 || et > 3000)
+    while (et < 2026 || et > 2038)
     {
         if (cin.fail())
         {
